@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { NavBar } from '../Components/Navbar';
 import { Loader } from '../Components/Loader';
 import { SpecialistPage } from './SpecialistPage';
+import Chart from '../Components/Chart';
 
 export const Result = ({ score, surveyScore, setScore, setSurveyScore }) => {
   const [res, setRes] = useState('Res');
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    const language =
-      (score[0] + score[1] + score[2] + score[3] + score[4] + score[5] + score[7]) / 7;
+    const language = (score[0] + score[1] + score[2] + score[3] + score[4] + score[5] + score[7]) / 7;
     const memory = (score[1] + score[8]) / 2;
     const speed = 0.4;
     const visual = (score[0] + score[2] + score[3] + score[6]) / 4;
@@ -22,7 +22,7 @@ export const Result = ({ score, surveyScore, setScore, setSurveyScore }) => {
       audio,
       survey
     };
-    console.log(data)
+    console.log(data);
     const fetchData = async () => {
       try {
         setLoading(true);
@@ -58,6 +58,7 @@ export const Result = ({ score, surveyScore, setScore, setSurveyScore }) => {
           </div>
         </div>
       )}
+      <Chart score={20} key={2} />
       <SpecialistPage />
     </>
   );
